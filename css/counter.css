@@ -1,6 +1,7 @@
 html{
     background-color: rgb(240, 240, 240);
     font-family: 'B612', sans-serif;
+    text-align: center;
 }
 
 #counterDecrementContainer, #counterIncrementContainer{
@@ -10,4 +11,8 @@ html{
 
 #countdownSubmit{
     margin-top: 1%;
+}
+
+button{
+    cursor: pointer;
 }
