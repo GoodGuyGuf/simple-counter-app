@@ -73,8 +73,7 @@ class Countdown{
 
     handleCountdown = () => {
         this.submitButton.addEventListener("click", () => {
-            if (this.initialNumberForm.innerHTML !== undefined && typeof(parseInt(this.initialNumberForm.innerHTML)) === "number"){
-                if (this.endingNumberForm.innerHTML !== undefined && typeof(parseInt(this.endingNumberForm.innerHTML)) === "number"){
+            if (!!this.initialNumberForm.value || !!this.endingNumber){
                     const startTimer = setInterval(() => {
                         this.initialNumber.innerHTML = parseInt(this.initialNumber.innerHTML) - 1;
                         if (parseInt(this.initialNumber.innerHTML) === parseInt(this.endingNumber)){
@@ -84,7 +83,6 @@ class Countdown{
                     this.pauseButton.addEventListener("click", () => {
                         clearInterval(startTimer)
                     })
-                }
             } else {
                 const error = document.createElement("p");
                 error.id = "countdownError";
