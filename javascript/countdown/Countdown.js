@@ -75,11 +75,10 @@ class Countdown{
                         if (parseInt(this.initialNumber.innerHTML) === parseInt(this.endingNumber)){
                             clearInterval(startTimer);
                         }
-                        this.pauseButton.addEventListener("click", () => {
-                            clearInterval(startTimer)
-                        })
                     }, 100)
-
+                    this.pauseButton.addEventListener("click", () => {
+                        clearInterval(startTimer)
+                    })
                 }
             } else {
                 const error = document.createElement("p");
