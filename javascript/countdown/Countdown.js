@@ -73,7 +73,7 @@ class Countdown{
 
     handleCountdown = () => {
         this.submitButton.addEventListener("click", () => {
-            if (!!this.initialNumberForm.value || !!this.endingNumber){
+            if (!!this.initialNumberForm.value && !!document.getElementById("endingNumberForm").value){
                     const startTimer = setInterval(() => {
                         this.initialNumber.innerHTML = parseInt(this.initialNumber.innerHTML) - 1;
                         if (parseInt(this.initialNumber.innerHTML) === parseInt(this.endingNumber)){
