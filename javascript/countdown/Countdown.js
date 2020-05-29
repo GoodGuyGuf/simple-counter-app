@@ -29,7 +29,7 @@ class Countdown{
         this.initialNumberContainer.appendChild(this.initialNumberHeader);
         
         this.initialNumberForm = document.createElement("form"); // initial number form
-        this.initialNumberForm.innerHTML = `<input id="initialNumberForm" type="text"/>`;
+        this.initialNumberForm.innerHTML = `<input id="initialNumberForm" type="text" placeholder="Initial Number"/>`;
         this.initialNumberContainer.appendChild(this.initialNumberForm);
 
         this.endingNumberContainer = document.createElement("div"); // ending number div
@@ -42,7 +42,7 @@ class Countdown{
         this.endingNumberContainer.appendChild(this.endingNumberHeader);
 
         this.endingNumberForm = document.createElement("form"); // ending number form
-        this.endingNumberForm.innerHTML = `<input id="endingNumberForm" type="text"/>`;
+        this.endingNumberForm.innerHTML = `<input id="endingNumberForm" type="text"placeholder="Ending Number"/>`;
         this.endingNumberContainer.appendChild(this.endingNumberForm);
 
         this.endingNumber = 0;
@@ -75,7 +75,7 @@ class Countdown{
                         if (parseInt(this.initialNumber.innerHTML) === parseInt(this.endingNumber)){
                             clearInterval(startTimer);
                         }
-                    }, 100)
+                    }, 1000)
                     this.pauseButton.addEventListener("click", () => {
                         clearInterval(startTimer)
                     })
