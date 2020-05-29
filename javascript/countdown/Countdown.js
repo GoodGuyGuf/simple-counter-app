@@ -9,6 +9,11 @@ class Countdown{
         this.logo.innerHTML = "Countdown";
         this.div.appendChild(this.logo);
 
+        this.IntervalSpeed = document.createElement("h6");
+        this.IntervalSpeed.id = "IntervalSpeed";
+        this.IntervalSpeed.innerHTML = "The countdown timer decrements every 1 second.";
+        this.div.appendChild(this.IntervalSpeed);
+
         this.initialNumber = document.createElement("h2"); // initial number h3
         this.initialNumber.id = "initialNumber";
         this.initialNumber.innerHTML = 0;
