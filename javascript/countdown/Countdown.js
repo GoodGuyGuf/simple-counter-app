@@ -68,8 +68,8 @@ class Countdown{
 
     handleCountdown = () => {
         this.submitButton.addEventListener("click", () => {
-            if (this.initialNumber.value !== "" && typeof(parseInt(this.initialNumber.value)) === "number"){
-                if (this.endingNumber !== "" && typeof(parseInt(this.endingNumber)) === "number"){
+            if (this.initialNumberForm.value !== undefined && typeof(parseInt(this.initialNumber.value)) === "number"){
+                if (this.endingNumberForm.value !== undefined && typeof(parseInt(this.endingNumber)) === "number"){
                     const startTimer = setInterval(() => {
                         this.initialNumber.innerHTML = parseInt(this.initialNumber.innerHTML) - 1;
                         if (parseInt(this.initialNumber.innerHTML) === parseInt(this.endingNumber)){
@@ -94,8 +94,3 @@ class Countdown{
         })
     }
 }
-
-// const error = document.createElement("p");
-//                 error.id = "countdownError";
-//                 error.innerHTML = "Both input fields cannot be empty and they must have a number."
-//                 document.body.appendChild(error);
