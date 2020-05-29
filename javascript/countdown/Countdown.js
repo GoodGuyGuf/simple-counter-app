@@ -24,7 +24,7 @@ class Countdown{
         this.initialNumberContainer.appendChild(this.initialNumberHeader);
         
         this.initialNumberForm = document.createElement("form"); // initial number form
-        this.initialNumberForm.innerHTML = `<input type="text" name="initialNumber"/>`;
+        this.initialNumberForm.innerHTML = `<input id="initialNumberForm" type="text"/>`;
         this.initialNumberContainer.appendChild(this.initialNumberForm);
 
         this.endingNumberContainer = document.createElement("div"); // ending number div
@@ -37,7 +37,7 @@ class Countdown{
         this.endingNumberContainer.appendChild(this.endingNumberHeader);
 
         this.endingNumberForm = document.createElement("form"); // ending number form
-        this.endingNumberForm.innerHTML = `<input type="text" name="endingNumber"/>`;
+        this.endingNumberForm.innerHTML = `<input id="endingNumberForm" type="text"/>`;
         this.endingNumberContainer.appendChild(this.endingNumberForm);
         
         this.submitButton = document.createElement("button");
@@ -49,12 +49,19 @@ class Countdown{
         this.endingNumber.id = "initialNumber";
         this.endingNumber.innerHTML = this.endingNumber.value;
 
+        this.handleOnChange()
         this.handleCountdown();
     }
 
-    // handleOnKeyChange = () => {
-        
-    // }
+    handleOnChange = () => {
+        this.initialNumberForm.addEventListener("change", () => {
+            this.initialNumber.innerHTML = document.getElementById("initialNumberForm").value;
+        })
+
+        this.endingNumberForm.addEventListener("change", () => {
+            this.endingNumber.innerHTML = document.getElementById("endingNumberForm").value;
+        })
+    }
 
     // handleCountdown = () => {
     //     this.submitButton.addEventListener("click", () => {
