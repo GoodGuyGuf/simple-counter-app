@@ -34,7 +34,7 @@ class Countdown{
         this.initialNumberContainer.appendChild(this.initialNumberHeader);
         
         this.initialNumberForm = document.createElement("form"); // initial number form
-        this.initialNumberForm.innerHTML = `<input id="initialNumberForm" type="text" placeholder="Initial Number"/>`;
+        this.initialNumberForm.innerHTML = `<input id="initialNumberForm" type="number" placeholder="Initial Number"/>`;
         this.initialNumberContainer.appendChild(this.initialNumberForm);
 
         this.endingNumberContainer = document.createElement("div"); // ending number div
@@ -47,7 +47,7 @@ class Countdown{
         this.endingNumberContainer.appendChild(this.endingNumberHeader);
 
         this.endingNumberForm = document.createElement("form"); // ending number form
-        this.endingNumberForm.innerHTML = `<input id="endingNumberForm" type="text"placeholder="Ending Number"/>`;
+        this.endingNumberForm.innerHTML = `<input id="endingNumberForm" type="number"placeholder="Ending Number"/>`;
         this.endingNumberContainer.appendChild(this.endingNumberForm);
 
         this.endingNumber = 0;
@@ -72,27 +72,19 @@ class Countdown{
     }
 
     handleCountdown = () => {
-        this.submitButton.addEventListener("click", () => {
-            if (!!this.initialNumberForm.value && !!document.getElementById("endingNumberForm").value){
-                    const startTimer = setInterval(() => {
-                        this.initialNumber.innerHTML = parseInt(this.initialNumber.innerHTML) - 1;
-                        if (parseInt(this.initialNumber.innerHTML) === parseInt(this.endingNumber)){
-                            clearInterval(startTimer);
-                        }
-                    }, 1000)
-                    this.pauseButton.addEventListener("click", () => {
-                        clearInterval(startTimer)
-                    })
-            } else {
-                const error = document.createElement("p");
-                error.id = "countdownError";
-                error.innerHTML = "Both input fields cannot be empty and they must have a number.";
-                document.body.appendChild(error);
-
-                setTimeout(() => {
-                    error.remove();
-                }, 4000);
-            }
+        this.submitButton.addEventListener("click", event => {
+            event.preventDefault();
+            
+            const startTimer = setInterval(() => {
+                this.initialNumber.innerHTML = parseInt(this.initialNumber.innerHTML) - 1;
+                if (this.initialNumberForm.value === this.endingNumberForm.value){
+                    clearInterval(startTimer);
+                }
+            }, 1000)
+                    
+            this.pauseButton.addEventListener("click", () => {
+                clearInterval(startTimer)
+            })
         })
     }
 }

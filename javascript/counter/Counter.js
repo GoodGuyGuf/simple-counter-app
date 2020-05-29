@@ -28,13 +28,15 @@ class Counter{
     }
 
     handleIncrement = () => {
-        this.counterIncrement.addEventListener("click", () => {
-            this.counter.innerHTML = parseInt(this.counter.innerHTML) + 1;
+        this.counterIncrement.addEventListener("click", event => {
+            event.preventDefault(); // if you do not include event.preventDefault(), if user accidentally hits "enter"
+            this.counter.innerHTML = parseInt(this.counter.innerHTML) + 1; // the web page will be reloaded.
         })
     }
 
     handleDecrement = () => {
-        this.counterDecrement.addEventListener("click", () => {
+        this.counterDecrement.addEventListener("click", event => {
+            event.preventDefault();
             this.counter.innerHTML = parseInt(this.counter.innerHTML) - 1;
         })
     }
