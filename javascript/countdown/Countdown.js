@@ -39,48 +39,54 @@ class Countdown{
         this.endingNumberForm = document.createElement("form"); // ending number form
         this.endingNumberForm.innerHTML = `<input id="endingNumberForm" type="text"/>`;
         this.endingNumberContainer.appendChild(this.endingNumberForm);
+
+        this.endingNumber = 0;
         
         this.submitButton = document.createElement("button");
         this.submitButton.id = "countdownSubmit";
         this.submitButton.innerHTML = "Submit";
         document.body.appendChild(this.submitButton);
 
-        this.endingNumber = document.createElement("h3"); // initial number h3
-        this.endingNumber.id = "initialNumber";
-        this.endingNumber.innerHTML = this.endingNumber.value;
-
         this.handleOnChange()
         this.handleCountdown();
     }
 
     handleOnChange = () => {
-        this.initialNumberForm.addEventListener("change", () => {
+        this.initialNumberForm.addEventListener("keyup", () => {
             this.initialNumber.innerHTML = document.getElementById("initialNumberForm").value;
         })
 
-        this.endingNumberForm.addEventListener("change", () => {
-            this.endingNumber.innerHTML = document.getElementById("endingNumberForm").value;
+        this.endingNumberForm.addEventListener("keyup", () => {
+            this.endingNumber = document.getElementById("endingNumberForm").value
         })
     }
 
-    // handleCountdown = () => {
-    //     this.submitButton.addEventListener("click", () => {
-    //         if (this.initialNumber.value !== "" && typeof(parseInt(this.initialNumber.value)) === Number && parseInt(this.initialNumber.value) > parseInt(this.endingNumber.value)){
-    //             if (this.endingNumber.value !== "" && typeof(parseInt(this.endingNumber.value)) === Number){
-    //                 const startTimer = setInterval(() => {
-    //                     this.initialNumber.innerHTML = parseInt(this.initialNumber.value) - 1;
-    //                 }, 1000)
+    handleCountdown = () => {
+        this.submitButton.addEventListener("click", () => {
+            if (this.initialNumber.value !== "" && typeof(parseInt(this.initialNumber.value)) === "number"){
+                if (this.endingNumber !== "" && typeof(parseInt(this.endingNumber)) === "number"){
+                    const startTimer = setInterval(() => {
+                        this.initialNumber.innerHTML = parseInt(this.initialNumber.innerHTML) - 1;
+                        if (parseInt(this.initialNumber.innerHTML) === parseInt(this.endingNumber)){
+                            clearInterval(startTimer);
+                        }
+                    }, 100)
+                }
+            } else {
+                const error = document.createElement("p");
+                error.id = "countdownError";
+                error.innerHTML = "Both input fields cannot be empty and they must have a number.";
+                document.body.appendChild(error);
 
-    //                 if (parseInt(this.initialNumber.value) === parseInt(this.endingNumber.value)){
-    //                     clearInterval(startTimer);
-    //                 }
-    //             }
-    //         } else {
-    //             const error = document.createElement("p");
-    //             error.id = "countdownError";
-    //             error.innerHTML = "Both input fields cannot be empty and they must have a number."
-    //             document.body.appendChild(error);
-    //         }
-    //     })
-    // }
+                setTimeout(() => {
+                    error.remove();
+                }, 4000);
+            }
+        })
+    }
 }
+
+// const error = document.createElement("p");
+//                 error.id = "countdownError";
+//                 error.innerHTML = "Both input fields cannot be empty and they must have a number."
+//                 document.body.appendChild(error);
