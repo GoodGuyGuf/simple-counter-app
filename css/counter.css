@@ -1,0 +1,9 @@
+html{
+    background-color: rgb(240, 240, 240);
+    font-family: 'B612', sans-serif;
+}
+
+#counterDecrementContainer, #counterIncrementContainer{
+    display: inline-block;
+    margin-right:5px
+}
