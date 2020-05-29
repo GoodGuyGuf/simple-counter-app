@@ -1,5 +1,10 @@
 class Counter{
     constructor(){
+        this.counter = document.createElement("h2");
+        this.counter.id = "counter";
+        this.counter.innerHTML = 0;
+        document.body.appendChild(this.counter);
+
         this.counterDecrementContainer = document.createElement("div");
         this.counterDecrementContainer.id = "counterDecrementContainer";
         document.body.appendChild(this.counterDecrementContainer);
@@ -17,11 +22,6 @@ class Counter{
         this.counterIncrement.id = "increment";
         this.counterIncrement.innerHTML = "+";
         this.counterIncrementContainer.appendChild(this.counterIncrement);
-
-        this.counter = document.createElement("h2");
-        this.counter.id = "counter";
-        this.counter.innerHTML = 0;
-        document.body.appendChild(this.counter);
 
         this.handleIncrement();
         this.handleDecrement();
