@@ -29,15 +29,13 @@ class Counter{
 
     handleIncrement = () => {
         this.counterIncrement.addEventListener("click", () => {
-            const increment = parseInt(this.counter.innerHTML) + 1;
-            this.counter.innerHTML = increment;
+            this.counter.innerHTML = parseInt(this.counter.innerHTML) + 1;
         })
     }
 
     handleDecrement = () => {
         this.counterDecrement.addEventListener("click", () => {
-            const decrement = parseInt(this.counter.innerHTML) - 1;
-            this.counter.innerHTML = decrement;
+            this.counter.innerHTML = parseInt(this.counter.innerHTML) - 1;
         })
     }
 }
