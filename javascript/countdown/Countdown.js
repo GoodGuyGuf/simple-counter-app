@@ -14,6 +14,11 @@ class Countdown{
         this.initialNumber.innerHTML = 0;
         this.div.appendChild(this.initialNumber);
 
+        this.pauseButton = document.createElement("button");
+        this.pauseButton.id = "pauseButton";
+        this.pauseButton.innerHTML = "Pause";
+        this.div.appendChild(this.pauseButton);
+
         this.initialNumberContainer = document.createElement("div"); // initial number div
         this.initialNumberContainer.id = "initialNumberContainer";
         document.body.appendChild(this.initialNumberContainer);
@@ -47,7 +52,7 @@ class Countdown{
         this.submitButton.innerHTML = "Submit";
         document.body.appendChild(this.submitButton);
 
-        this.handleOnChange()
+        this.handleOnChange();
         this.handleCountdown();
     }
 
@@ -70,7 +75,11 @@ class Countdown{
                         if (parseInt(this.initialNumber.innerHTML) === parseInt(this.endingNumber)){
                             clearInterval(startTimer);
                         }
+                        this.pauseButton.addEventListener("click", () => {
+                            clearInterval(startTimer)
+                        })
                     }, 100)
+
                 }
             } else {
                 const error = document.createElement("p");
