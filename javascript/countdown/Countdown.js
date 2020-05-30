@@ -37,13 +37,14 @@ class Countdown{
             <br/>
             <br/>
 
-            <input type='submit' value='Submit'/>
+            <input id="submitButton" type='submit' value='Submit'/>
         </form>
         `
         document.body.appendChild(this.formContainer);
 
         this.initialNumberInput = document.getElementById("initialNumberInput");
         this.endingNumberInput = document.getElementById("endingNumberInput");
+        this.submitButton = document.getElementById("submitButton");
 
         this.handleOnChange();
         // this.handleCountdown();
@@ -60,19 +61,20 @@ class Countdown{
     }
 
     // handleCountdown = () => {
-    //     this.submitButton.addEventListener("click", event => {
+    //     this.submitButton.addEventListener("submit", event => {
+    //         console.log(event)
     //         event.preventDefault();
             
-    //         const startTimer = setInterval(() => {
-    //             this.initialNumber.innerHTML = parseInt(this.initialNumber.innerHTML) - 1;
-    //             // if (this.initialNumberForm.value == this.endingNumberForm.value){
-    //             //     clearInterval(startTimer);
-    //             // }
-    //         }, 1000)
+    //         // const startTimer = setInterval(() => {
+    //         //     this.initialNumber.innerHTML = parseInt(this.initialNumber.innerHTML) - 1;
+    //         //     // if (this.initialNumberForm.value == this.endingNumberForm.value){
+    //         //     //     clearInterval(startTimer);
+    //         //     // }
+    //         // }, 1000)
                     
-    //         this.pauseButton.addEventListener("click", () => {
-    //             clearInterval(startTimer)
-    //         })
+    //         // this.pauseButton.addEventListener("click", () => {
+    //         //     clearInterval(startTimer)
+    //         // })
     //     })
     // }
 }

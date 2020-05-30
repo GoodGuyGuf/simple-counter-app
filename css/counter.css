@@ -13,6 +13,6 @@ html{
     margin-top: 1%;
 }
 
-button{
+button, #submitButton{
     cursor: pointer;
 }
