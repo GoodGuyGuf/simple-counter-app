@@ -60,13 +60,23 @@ class Countdown{
         this.submitButton.addEventListener("click", event => {
             event.preventDefault();
 
-            const start = setInterval(() => {
-                this.initialNumber.innerHTML = parseInt(this.initialNumber.innerHTML) - 1;
-                
-                if (this.initialNumber.innerHTML == this.endingNumberInput.value){
-                    clearInterval(start)
-                }
-            }, 1000)
+            if (this.endingNumberInput.value > this.initialNumber.innerHTML){
+                const error = document.createElement("p");
+                error.innerHTML = "Initial number has to be greater than the ending number";
+                document.body.appendChild(error);
+
+                setTimeout(() => {
+                    error.remove();
+                }, 4000)
+            } else {
+                const start = setInterval(() => {
+                    this.initialNumber.innerHTML = parseInt(this.initialNumber.innerHTML) - 1;
+                    
+                    if (this.initialNumber.innerHTML == this.endingNumberInput.value){
+                        clearInterval(start)
+                    }
+                }, 1000)
+            }
         })
     }
 }
