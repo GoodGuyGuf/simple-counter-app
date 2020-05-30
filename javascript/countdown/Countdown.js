@@ -47,34 +47,26 @@ class Countdown{
         this.submitButton = document.getElementById("submitButton");
 
         this.handleOnChange();
-        // this.handleCountdown();
+        this.handleCountdown();
     }
 
     handleOnChange = () => {
         this.initialNumberInput.addEventListener("keyup", () => {
             this.initialNumber.innerHTML = document.getElementById("initialNumberInput").value;
         })
-
-        this.endingNumberInput.addEventListener("keyup", () => {
-            this.endingNumber = document.getElementById("endingNumberInput").value
-        })
     }
 
-    // handleCountdown = () => {
-    //     this.submitButton.addEventListener("submit", event => {
-    //         console.log(event)
-    //         event.preventDefault();
-            
-    //         // const startTimer = setInterval(() => {
-    //         //     this.initialNumber.innerHTML = parseInt(this.initialNumber.innerHTML) - 1;
-    //         //     // if (this.initialNumberForm.value == this.endingNumberForm.value){
-    //         //     //     clearInterval(startTimer);
-    //         //     // }
-    //         // }, 1000)
-                    
-    //         // this.pauseButton.addEventListener("click", () => {
-    //         //     clearInterval(startTimer)
-    //         // })
-    //     })
-    // }
+    handleCountdown = () => {
+        this.submitButton.addEventListener("click", event => {
+            event.preventDefault();
+
+            const start = setInterval(() => {
+                this.initialNumber.innerHTML = parseInt(this.initialNumber.innerHTML) - 1;
+                
+                if (this.initialNumber.innerHTML == this.endingNumberInput.value){
+                    clearInterval(start)
+                }
+            }, 1000)
+        })
+    }
 }
