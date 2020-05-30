@@ -24,67 +24,52 @@ class Countdown{
         this.pauseButton.innerHTML = "Pause";
         this.div.appendChild(this.pauseButton);
 
-        this.initialNumberContainer = document.createElement("div"); // initial number div
-        this.initialNumberContainer.id = "initialNumberContainer";
-        document.body.appendChild(this.initialNumberContainer);
+        this.formContainer = document.createElement("div"); // initial number div
+        this.formContainer.id = "formContainer";
+        this.formContainer.innerHTML = `
+        <form>
+            <h3 id='initialNumberHeader'>Input a number value to count down from:</h3>
+            <input id="initialNumberForm" type="number" placeholder="Initial Number" required/>
 
-        this.initialNumberHeader = document.createElement("h3"); // initial number h3
-        this.initialNumberHeader.id = "initialNumberHeader";
-        this.initialNumberHeader.innerHTML = "Input a number value to count down from:";
-        this.initialNumberContainer.appendChild(this.initialNumberHeader);
-        
-        this.initialNumberForm = document.createElement("form"); // initial number form
-        this.initialNumberForm.innerHTML = `<input id="initialNumberForm" type="number" placeholder="Initial Number"/>`;
-        this.initialNumberContainer.appendChild(this.initialNumberForm);
+            <h3 id='endingNumberHeader'>Input a number value where the timer will stop:</h3>
+            <input id="endingNumberForm" type="number"placeholder="Ending Number" required/>
 
-        this.endingNumberContainer = document.createElement("div"); // ending number div
-        this.endingNumberContainer.id = "endingNumberContainer";
-        document.body.appendChild(this.endingNumberContainer);
+            <br/>
+            <br/>
 
-        this.endingNumberHeader = document.createElement("h3"); // ending number h3
-        this.endingNumberHeader.id = "endingNumberHeader";
-        this.endingNumberHeader.innerHTML = "Input a number value where the timer will stop:";
-        this.endingNumberContainer.appendChild(this.endingNumberHeader);
+            <input type='submit' value='Submit'/>
+        </form>
+        `
+        document.body.appendChild(this.formContainer);
 
-        this.endingNumberForm = document.createElement("form"); // ending number form
-        this.endingNumberForm.innerHTML = `<input id="endingNumberForm" type="number"placeholder="Ending Number"/>`;
-        this.endingNumberContainer.appendChild(this.endingNumberForm);
-
-        this.endingNumber = 0;
-        
-        this.submitButton = document.createElement("button");
-        this.submitButton.id = "countdownSubmit";
-        this.submitButton.innerHTML = "Submit";
-        document.body.appendChild(this.submitButton);
-
-        this.handleOnChange();
-        this.handleCountdown();
+        // this.handleOnChange();
+        // this.handleCountdown();
     }
 
-    handleOnChange = () => {
-        this.initialNumberForm.addEventListener("keyup", () => {
-            this.initialNumber.innerHTML = document.getElementById("initialNumberForm").value;
-        })
+    // handleOnChange = () => {
+    //     this.initialNumberForm.addEventListener("keyup", () => {
+    //         this.initialNumber.innerHTML = document.getElementById("initialNumberForm").value;
+    //     })
 
-        this.endingNumberForm.addEventListener("keyup", () => {
-            this.endingNumber = document.getElementById("endingNumberForm").value
-        })
-    }
+    //     this.endingNumberForm.addEventListener("keyup", () => {
+    //         this.endingNumber = document.getElementById("endingNumberForm").value
+    //     })
+    // }
 
-    handleCountdown = () => {
-        this.submitButton.addEventListener("click", event => {
-            event.preventDefault();
+    // handleCountdown = () => {
+    //     this.submitButton.addEventListener("click", event => {
+    //         event.preventDefault();
             
-            const startTimer = setInterval(() => {
-                this.initialNumber.innerHTML = parseInt(this.initialNumber.innerHTML) - 1;
-                if (this.initialNumberForm.value === this.endingNumberForm.value){
-                    clearInterval(startTimer);
-                }
-            }, 1000)
+    //         const startTimer = setInterval(() => {
+    //             this.initialNumber.innerHTML = parseInt(this.initialNumber.innerHTML) - 1;
+    //             // if (this.initialNumberForm.value == this.endingNumberForm.value){
+    //             //     clearInterval(startTimer);
+    //             // }
+    //         }, 1000)
                     
-            this.pauseButton.addEventListener("click", () => {
-                clearInterval(startTimer)
-            })
-        })
-    }
+    //         this.pauseButton.addEventListener("click", () => {
+    //             clearInterval(startTimer)
+    //         })
+    //     })
+    // }
 }
