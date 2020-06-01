@@ -23,8 +23,14 @@ class Counter{
         this.counterIncrement.innerHTML = "+";
         this.counterIncrementContainer.appendChild(this.counterIncrement);
 
+        this.resetButton = document.createElement("button");
+        this.resetButton.id = "counterReset";
+        this.resetButton.innerHTML = "Reset";
+        this.counterIncrementContainer.appendChild(this.resetButton);
+
         this.handleIncrement();
         this.handleDecrement();
+        this.handleOnReset();
     }
 
     handleIncrement = () => {
@@ -38,6 +44,13 @@ class Counter{
         this.counterDecrement.addEventListener("click", event => {
             event.preventDefault();
             this.counter.innerHTML = parseInt(this.counter.innerHTML) - 1;
+        })
+    }
+
+    handleOnReset = () => {
+        this.resetButton.addEventListener("click", event => {
+            event.preventDefault();
+            this.counter.innerHTML = 0;
         })
     }
 }
