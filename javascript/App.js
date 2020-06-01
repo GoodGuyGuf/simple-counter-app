@@ -11,6 +11,7 @@ class App{
 
         new Counter;
         new Countdown;
+        new Timer;
     }
 
 }
