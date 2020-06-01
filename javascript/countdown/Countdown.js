@@ -60,7 +60,7 @@ class Countdown{
         this.submitButton.addEventListener("click", event => {
             event.preventDefault();
 
-            if (this.endingNumberInput.value > this.initialNumber.innerHTML){
+            if (parseInt(this.initialNumber.innerHTML) <= parseInt(this.endingNumberInput.value)){
                 const error = document.createElement("p");
                 error.innerHTML = "Initial number has to be greater than the ending number";
                 document.body.appendChild(error);
