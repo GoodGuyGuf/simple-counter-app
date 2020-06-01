@@ -26,7 +26,7 @@ class Counter{
         this.resetButton = document.createElement("button");
         this.resetButton.id = "counterReset";
         this.resetButton.innerHTML = "Reset";
-        this.counterIncrementContainer.appendChild(this.resetButton);
+        document.body.appendChild(this.resetButton);
 
         this.handleIncrement();
         this.handleDecrement();
