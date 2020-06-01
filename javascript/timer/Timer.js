@@ -24,5 +24,34 @@ class Timer{
         this.resetButton.id = "timerReset";
         this.resetButton.innerHTML = "Reset";
         this.div.appendChild(this.resetButton);
+
+        this.handleOnStart();
+    }
+
+    handleOnStart = () => {
+        this.startButton.addEventListener("click", event => {
+            event.preventDefault();
+            const interval = setInterval(() => {
+                this.time.innerHTML = parseInt(this.time.innerHTML) + 1;
+            }, 1000)
+
+            this.handleOnPause(interval);
+            this.handleOnReset(interval);
+        })
+    }
+
+    handleOnPause = (interval) => {
+        this.pauseButton.addEventListener("click", event => {
+            event.preventDefault();
+            clearInterval(interval);
+        })
+    }
+
+    handleOnReset = (interval) => {
+        this.resetButton.addEventListener("click", event => {
+            event.preventDefault();
+            clearInterval(interval);
+            this.time.innerHTML = 0;
+        })
     }
 }
