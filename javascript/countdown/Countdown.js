@@ -29,10 +29,10 @@ class Countdown{
         this.formContainer.innerHTML = `
         <form>
             <h3 id='initialNumberHeader'>Input a number value to count down from:</h3>
-            <input id="initialNumberInput" type="number" placeholder="Initial Number" required/>
+            <input id="initialNumberInput" type="number" placeholder="Initial Number"/>
 
             <h3 id='endingNumberHeader'>Input a number value where the timer will stop:</h3>
-            <input id="endingNumberInput" type="number"placeholder="Ending Number" required/>
+            <input id="endingNumberInput" type="number"placeholder="Ending Number"/>
 
             <br/>
             <br/>
@@ -63,6 +63,14 @@ class Countdown{
             if (parseInt(this.initialNumber.innerHTML) <= parseInt(this.endingNumberInput.value)){
                 const error = document.createElement("p");
                 error.innerHTML = "Initial number has to be greater than the ending number";
+                document.body.appendChild(error);
+
+                setTimeout(() => {
+                    error.remove();
+                }, 4000)
+            } else if (this.initialNumber.innerHTML === "" || this.endingNumberInput.value === ""){
+                const error = document.createElement("p");
+                error.innerHTML = "Fields cannot be blank";
                 document.body.appendChild(error);
 
                 setTimeout(() => {
