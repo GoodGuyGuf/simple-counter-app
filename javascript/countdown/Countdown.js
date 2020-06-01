@@ -63,7 +63,7 @@ class Countdown{
             if (parseInt(this.initialNumber.innerHTML) <= parseInt(this.endingNumberInput.value)){
                 const error = document.createElement("p");
                 error.innerHTML = "Initial number has to be greater than the ending number";
-                document.body.appendChild(error);
+                this.div.appendChild(error);
 
                 setTimeout(() => {
                     error.remove();
@@ -71,7 +71,7 @@ class Countdown{
             } else if (this.initialNumber.innerHTML === "" || this.endingNumberInput.value === ""){
                 const error = document.createElement("p");
                 error.innerHTML = "Fields cannot be blank";
-                document.body.appendChild(error);
+                this.div.appendChild(error);
 
                 setTimeout(() => {
                     error.remove();
