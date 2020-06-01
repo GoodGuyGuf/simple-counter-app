@@ -84,6 +84,12 @@ class Countdown{
                         clearInterval(start)
                     }
                 }, 1000)
+
+                this.pauseButton.addEventListener("click", event => {
+                    event.preventDefault();
+
+                    clearInterval(start);
+                })
             }
         })
     }
